@@ -53,14 +53,14 @@ export class CountriesService {
   getCountryBordersByCodes( borders: string[] ): Observable<SmallCountry[]> {
     if ( !borders || borders.length === 0 ) return of([]);
 
-    const countryRequest: Observable<SmallCountry>[] = [];
+    const countriesRequests: Observable<SmallCountry>[] = [];
 
     borders.forEach( code => {
       const request = this.getCountryByAlphaCode( code );
-      countryRequest.push( request );
+      countriesRequests.push( request );
     });
 
-    return combineLatest( countryRequest );
+    return combineLatest( countriesRequests );
   }
 
 }
